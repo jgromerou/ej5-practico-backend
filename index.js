@@ -5,6 +5,7 @@ import morgan from 'morgan';
 import path from 'path';
 import './src/database/ConnectionDB';
 import recetasRouter from './src/routes/recetas.routes';
+import usuariosRouter from './src/routes/usuarios.routes';
 
 dotenv.config();
 
@@ -29,3 +30,4 @@ app.use(express.static(path.join(__dirname, '/public')));
 
 //rutas
 app.use('/apirecetas', recetasRouter);
+app.use('/apirecetas/auth', usuariosRouter);
