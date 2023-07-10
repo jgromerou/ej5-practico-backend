@@ -16,7 +16,7 @@ export const crearReceta = async (req, res) => {
     if (receta) {
       //si la receta existe
       return res.status(400).json({
-        mensaje: 'ya existe el nombre de la receta',
+        mensaje: `La Receta ${receta.nombreReceta} ya existe. Intente con otro.`,
       });
     }
     const recetaNueva = new Receta(req.body);
@@ -69,6 +69,21 @@ export const borrarReceta = async (req, res) => {
     console.log(error);
     res.status(404).json({
       mensaje: 'Error, no se pudo borrar la receta.',
+    });
+  }
+};
+
+export const editarReceta = async (req, res) => {
+  try {
+    //buscar en la BD un documento receta mediante el id y editarlo
+    await Receta.findByIdAndUpdate(req.params.id, req.body);
+    res.status(200).json({
+      mensaje: 'La Receta fue editada correctamente.',
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(404).json({
+      mensaje: error,
     });
   }
 };
