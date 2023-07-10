@@ -1,16 +1,21 @@
 import { Router } from 'express';
 import {
-  crearUsuario,
-  login,
-  obtenerListaUsuarios,
-  obtenerUsuario,
-} from '../controllers/usuarios.controllers';
+  borrarReceta,
+  controladorTest,
+  crearReceta,
+  editarReceta,
+  obtenerListaRecetas,
+  obtenerReceta,
+} from '../controllers/recetas.controllers';
 
 const router = new Router();
 
-router.route('/').post(login);
-
-router.route('/usuarios').post(crearUsuario).get(obtenerListaUsuarios);
-router.route('/usuarios/:id').get(obtenerUsuario);
+router.route('/').get(controladorTest);
+router.route('/recetas').post(crearReceta).get(obtenerListaRecetas);
+router
+  .route('/recetas/:id')
+  .get(obtenerReceta)
+  .delete(borrarReceta)
+  .put(editarReceta);
 
 export default router;
