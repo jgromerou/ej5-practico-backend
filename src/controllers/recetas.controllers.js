@@ -57,3 +57,18 @@ export const obtenerReceta = async (req, res) => {
     });
   }
 };
+
+export const borrarReceta = async (req, res) => {
+  try {
+    //buscar en la BD un documento receta mediante el id y borrarlo
+    await Receta.findByIdAndDelete(req.params.id);
+    res.status(200).json({
+      mensaje: 'La receta fue borrada correctamente.',
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(404).json({
+      mensaje: 'Error, no se pudo borrar la receta.',
+    });
+  }
+};

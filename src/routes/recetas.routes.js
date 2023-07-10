@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import {
+  borrarReceta,
   controladorTest,
   crearReceta,
   obtenerListaRecetas,
@@ -10,6 +11,6 @@ const router = new Router();
 
 router.route('/').get(controladorTest);
 router.route('/recetas').post(crearReceta).get(obtenerListaRecetas);
-router.route('/recetas/:id').get(obtenerReceta);
+router.route('/recetas/:id').get(obtenerReceta).delete(borrarReceta);
 
 export default router;
