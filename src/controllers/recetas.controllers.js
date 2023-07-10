@@ -44,3 +44,16 @@ export const obtenerListaRecetas = async (req, res) => {
     });
   }
 };
+
+export const obtenerReceta = async (req, res) => {
+  try {
+    //buscar en la BD un documento receta mediante el id
+    const receta = await Receta.findById(req.params.id);
+    res.status(200).json(receta);
+  } catch (error) {
+    console.log(error);
+    res.status(404).json({
+      mensaje: 'Error al intentar obtener la receta',
+    });
+  }
+};
