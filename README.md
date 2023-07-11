@@ -89,7 +89,7 @@ Ejemplo de Body en el envío de Crear nueva Receta:
 | Método | #Url de Usuarios   | #Acción                      |
 | ------ | ------------------ | ---------------------------- |
 | POST   | /auth              | Login de un usuario          |
-| POST   | /auth/usuarios     | Crear nueva receta           |
+| POST   | /auth/usuarios     | Crear nuevo usuario          |
 | GET    | /auth/usuarios     | Muestra la lista de usuarios |
 | GET    | /auth/usuarios/:id | Busca un usuario por su id   |
 
