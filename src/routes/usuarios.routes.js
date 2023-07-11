@@ -20,7 +20,6 @@ router.route('/').post(
         max: 70,
       })
       .withMessage('El password debe contener entre 8 y 70 caracteres'),
-    // resultadosValidacion,
   ],
   login
 );
@@ -39,7 +38,6 @@ router
           max: 70,
         })
         .withMessage('El password debe contener entre 8 y 70 caracteres'),
-      // resultadosValidacion,
     ],
     crearUsuario
   )
