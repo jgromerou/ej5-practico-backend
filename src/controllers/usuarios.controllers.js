@@ -1,8 +1,16 @@
 import Usuario from '../models/usuario';
 import bcrypt from 'bcrypt';
+import { validationResult } from 'express-validator';
 
 export const crearUsuario = async (req, res) => {
   try {
+    // manejar los errores de la validacion
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({
+        errors: errors.array(),
+      });
+    }
     const { email, password } = new Usuario(req.body);
 
     let usuario = await Usuario.findOne({ email });
@@ -35,6 +43,13 @@ export const crearUsuario = async (req, res) => {
 
 export const obtenerListaUsuarios = async (req, res) => {
   try {
+    // manejar los errores de la validacion
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({
+        errors: errors.array(),
+      });
+    }
     //buscar en la BD la collection de usuarios
     const usuarios = await Usuario.find().select('-password -__v');
     res.status(200).json(usuarios);
